@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: cornflowerblue;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin: 20px auto;
+            width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin: 20px auto;
+            width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        button[type="submit"],
+        button[type="reset"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button[type="submit"]:hover,
+        button[type="reset"]:hover {
+            background-color: #45a049;
+        }
+
+        button[type="submit"]:focus,
+        button[type="reset"]:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center">Registration Form In Html</h1>
+    <form action="/" method="post" onsubmit="addRecord(); return false;">
+        <table>
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    <input type="text" name="name" placeholder="Name" id="name" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Phone Number:
+                </td>
+                <td>
+                    <input type="tel" name="phone" placeholder="9867******" id="phone" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email Id:
+                </td>
+                <td>
+                    <input type="email" name="email"placeholder="example1@*8" id="email" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password:
+                </td>
+                <td>
+                    <input type="password" name="password"placeholder="Password" id="password" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gender:
+                </td>
+                <td>
+                    <input type="radio" name="gender" value="Male" id="genderMale" required>
+                    <label for="genderMale">Male</label>
+                    <input type="radio" name="gender" value="Female" id="genderFemale" required>
+                    <label for="genderFemale">Female</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Date of Birth:
+                </td>
+                <td>
+                    <input type="date" name="dob" id="dob" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Hobbies:
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" value="Singing" id="hobbySinging">
+                    <label for="hobbySinging">Singing</label>
+                    <input type="checkbox" name="hobby" value="Dancing" id="hobbyDancing">
+                    <label for="hobbyDancing">Dancing</label>
+                    <input type="checkbox" name="hobby" value="Playing" id="hobbyPlaying">
+                    <label for="hobbyPlaying">Playing</label>
+                    <input type="checkbox" name="hobby" value="Gaming" id="hobbyGaming">
+                    <label for="hobbyGaming">Gaming</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Education Qualification:
+                </td>
+                <td>
+                    <select id="qualification" name="qualification"required>
+                        <option value="">Select Option</option>
+                        <option value="10+2">10+2</option>
+                        <option value="Graduation">Graduation</option>
+                        <option value="Postgraduation">Postgraduation</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address:
+                </td>
+                <td>
+                    <textarea rows="5" cols="17" name="address"placeholder="Address" id="address" required></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center">
+                    <button type="submit" >Submit</button>
+                    <button type="reset">Reset</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <h2 style="text-align:center">Registered Users</h2>
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Gender</th>
+                <th>Date of Birth</th>
+                <th>Hobbies</th>
+                <th>Qualification</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="userRecords">
+        </tbody>
+    </table>
+
+    <script>
+        function addRecord() {
+            var name = document.getElementById("name").value;
+            var phone = document.getElementById("phone").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var dob = document.getElementById("dob").value;
+            var hobbies = "";
+            var hobbyCheckboxes = document.querySelectorAll('input[name="hobby"]:checked');
+            for (var i = 0; i < hobbyCheckboxes.length; i++) {
+                hobbies += hobbyCheckboxes[i].value + ", ";
+            }
+            hobbies = hobbies.slice(0, -2); // Remove the trailing comma and space
+            var qualification = document.getElementById("qualification").value;
+            var address = document.getElementById("address").value;
+
+            var userRecord = "<tr>" +
+                "<td>" + name + "</td>" +
+                "<td>" + phone + "</td>" +
+                "<td>" + email + "</td>" +
+                "<td>" + password + "</td>" +
+                "<td>" + gender + "</td>" +
+                "<td>" + dob + "</td>" +
+                "<td>" + hobbies + "</td>" +
+                "<td>" + qualification + "</td>" +
+                "<td>" + address + "</td>" +
+                '<td><button onclick="deleteRecord(this)">Delete</button></td>' +
+                "</tr>";
+
+            document.getElementById("userRecords").innerHTML += userRecord;
+            resetForm();
+        }
+
+        function deleteRecord(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        function resetForm() {
+            document.getElementById("name").value = "";
+            document.getElementById("phone").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("genderMale").checked = false;
+            document.getElementById("genderFemale").checked = false;
+            document.getElementById("dob").value = "";
+            var hobbyCheckboxes = document.querySelectorAll('input[name="hobby"]:checked');
+            for (var i = 0; i < hobbyCheckboxes.length; i++) {
+                hobbyCheckboxes[i].checked = false;
+            }
+            document.getElementById("qualification").selectedIndex = 0;
+            document.getElementById("address").value = "";
+        }
+    </script>
+</body>
+</html>
